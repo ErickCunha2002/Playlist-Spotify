@@ -2,12 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-
+import os
 
 sp=spotipy.client.Spotify(
     auth_manager=SpotifyOAuth(
-        client_id='209e9dd7e37b484f92696ed1cfea38b8',
-        client_secret='4a70d5ba3b4f4296a27bc0844012d438',
+        client_id=os.environ.get('SPOTIPY_CLIENT_ID'),
+        client_secret=os.environ.get('SPOTIPY_CLIENT_SECRET'),
         redirect_uri='http://example.com',
         scope='playlist-modify-private',
         show_dialog=True,
@@ -46,7 +46,3 @@ while continuar:
         Musicas(year)
     else:
         print('Por favor, digite um ano correto! (YYYY-MM-DD)')
-    
-    
-    
-
